@@ -1,0 +1,27 @@
+<?php 
+/**
+*   Ruta fisica de la aplicacion
+*   Ejem.
+*      define("Path_App","C:/wamp64/www/Proyecto");
+*/
+define("Path_App",RutaFisica);
+
+/**
+*   Url de la aplicacion, sobre la cual accedemos desde el navegador.
+*   define ("URL","http://uninpahu/");
+*/
+define ("URL",URL);
+
+/**
+*   Mapeo de rutas, sobre el cual se organiza la forma en la que se interpreta
+*   la solicitud http.
+*   {
+        Nota: En desarrollo
+    }
+*/
+$MapRutas = array(
+    "default" => array (
+        "url" => "controller=Home/method=Index/id?"
+    )
+);
+?>

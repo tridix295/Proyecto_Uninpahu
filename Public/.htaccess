@@ -1,0 +1,46 @@
+# Con la sentencia Options le indicamos a apache que habilite todas las opciones excepto MultiViews para el directorio actual y subdirectorios.
+# En este caso al agregarle el -Indexes le estamos indicando que habilitara todas las opciones excepto los indices
+# lo cual hace que las vistas de los directorios sean visibles o no, en pocas palabras no podran ver la estructura de carpetas de nuestro proyecto :=).
+Options All -Indexes
+
+# Con esta opcion nos permite reescribir o redireccionar una url, y para esto primero debemos activarlo.
+RewriteEngine on
+
+# Con esta opcion RewriteCond nos permite definir una o mas condiciones al momento reescribir una url
+
+# Prevenimos ataques de tipo script injection
+RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
+RewriteRule ^(.*)$ index.php [F,L]
+
+# Prevencion para ataques de tipo username enumeration
+RewriteCond %{REQUEST_URI} !^/wp-admin [NC]
+RewriteCond %{QUERY_STRING} author=\d
+RewriteRule .* - [R=403,L]
+
+
+# Le indicamos que no admita directorios o archivos en la url
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# Apache nos permite filtrar las solicitudes http mediante expresiones regulares.
+# (.) coincide con cualquier carácter.
+# (*) coincide con cero o más repeticiones del carácter anterior.
+# (+) coincide con una o más repeticiones del carácter anterior.
+# ([ ]) indican un conjunto de caracteres que pueden coincidir con un único carácter en la cadena de texto.
+# (?) indica que el carácter anterior es opcional y puede aparecer cero o una vez.
+# ($) coincide con el final de una cadena de texto.
+# Por ejemplo, si deseas buscar todas las solicitudes de HTTP que comienzan con "https" en el registro de acceso de Apache,
+# puedes usar la expresión regular "^https". Aquí, "^" indica el inicio de la cadena de texto, 
+# y "https" es el patrón que deseas buscar.
+
+# Otro ejemplo sería si deseas buscar todas las solicitudes de HTTP que contienen la palabra "admin" en 
+# la URL, puedes usar la expresión regular "/admin/". Aquí, las barras diagonales indican que "admin" 
+# es un patrón a buscar en cualquier lugar dentro de la URL.
+
+# En este caso le indicamos que las peticiones que nos lleguen se la envie al archivo index.php mediante QSA con el parametro de
+# la url para que este la interprete, si la regla se cumple no se ejecuta nada mas por debajo de esta.
+
+# Ejemp. /Comidas/ArrozPaisa.php?Cant=1&Porciones=2 ==> index.php?url=Comidas&ArrozPaisa&Cant=1&Porciones=2
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]

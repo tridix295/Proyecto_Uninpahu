@@ -1,0 +1,28 @@
+{
+    "name": "bytsmaker/mvcphp",
+    "description": "Estructura basica del patron mvc en php",
+    "type": "project",
+    "require": {
+        "twig/twig": "3.x-dev",
+        "illuminate/database": "10.4",
+        "dompdf/dompdf": "dev-master"
+    },
+    "require-dev": {
+        "php": "^8.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sebastian Diaz",
+            "email": "d12sebastian21@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "App\\Controllers\\BaseController\\" : "App/Controllers/BaseController/",
+            "App\\Models\\": "App/Models/",
+            "Helpers\\" : "Helpers/"
+        }
+    }
+}
