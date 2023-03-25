@@ -1,7 +1,12 @@
 <?php
+/**
+ * Funciones auxiliares que pueden ser utilizadas a lo largo del proyecto
+ * @author Sebastian Diaz
+ * @version 1.0
+ */
 namespace Helpers;
 
-class flash extends Messages
+class helper extends Messages
 {
     private static $message;
 

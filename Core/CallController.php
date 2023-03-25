@@ -1,11 +1,17 @@
 <?php
+/**
+ * Script principal para el procesamiento y cargue de los controladores en funcion de la
+ * peticion http
+ * @author Sebastian Diaz
+ * @version 1.0
+ */
 
-use Helpers\flash;
+use Helpers\helper;
 
 // Obtenemos lo que sea que nos llegue por la url, sino llega nada nuestro
 // controlador por defecto sera home.
 $url = $_GET["url"] ?? "home";
-$url = flash::sliceRoute($url);
+$url = helper::sliceRoute($url);
 
 // Definimos el nombre del controlador
 // Cada controlador debe tener la siguiente nomenclatura:
@@ -13,7 +19,7 @@ $url = flash::sliceRoute($url);
 $controllerName = $url['controller'];
 
 $controllerFile = Path_App . '/App/Controllers/Http/' . $controllerName . 'Controller.php';
-if(!flash::validationRss('Controller',$controllerFile)){
+if(!helper::validationRss('Controller',$controllerFile)){
     die("Controlador no encontrado");
 };
 

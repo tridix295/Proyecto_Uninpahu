@@ -1,6 +1,9 @@
 <?php
 namespace App\Models\User;
-class UserModel{
+
+use Illuminate\Database\Eloquent\Model;
+
+class UserModel extends Model{
 
     public function getUser(){
         return "hola 2";

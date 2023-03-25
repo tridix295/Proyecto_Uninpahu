@@ -1,3 +1,4 @@
 /Logs/
 /vendor/
+Cache/*
 Config.php
