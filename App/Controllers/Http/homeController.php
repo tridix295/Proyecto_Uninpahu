@@ -1,6 +1,6 @@
 <?php
 use App\Controllers\BaseController\BaseController;
-use App\Model;
+
 class Home extends BaseController {
         public function __construct()
         {
@@ -8,7 +8,7 @@ class Home extends BaseController {
         }
 
         public function index(){
-          echo  $this->model->get();
+         $this->view->getView("index","Home");
         }
     }
 ?>

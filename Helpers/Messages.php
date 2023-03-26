@@ -1,4 +1,9 @@
 <?php 
+/**
+ * Administrador de los mensajes que pueden ser enviados al usuario y/o diagnostico del sistema.
+ * @author Sebastian Diaz
+ * @version 1.0
+*/
 namespace Helpers;
     class Messages{
         private $Messages = array();

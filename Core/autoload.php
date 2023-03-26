@@ -6,7 +6,8 @@
 *       {Controller_Home} extends baseController...
 *   /Helpers/...
 *       {class_helper} extends Messages...
-*
+*   @author Sebastian Diaz
+*   @version 1.0
 *   @param string $class_name clase hija a instanciar.
 *   @return void  
 **/
