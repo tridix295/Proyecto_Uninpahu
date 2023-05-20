@@ -17,6 +17,7 @@ class BaseController {
     public function __construct() {
         $modelName = get_class($this);
         $modelClass = "\\App\\Models\\{$modelName}\\{$modelName}Model";
+       // die( $modelClass);
         $this->model = new $modelClass();
         $this->view = new views();
     }

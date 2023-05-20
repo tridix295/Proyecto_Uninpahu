@@ -129,6 +129,25 @@ class helper extends Messages
         fwrite($handle, $data);
         fclose($handle);
     }
+    
+    public static function makeRoute($controller,$options = []){
+        $path = array();
+        if(array_key_exists($controller,$options)){
+            $repo = str_replace('\\','/',$options[$controller]);
+            $path["class"] = $options[$controller] . "\\$controller";
+            $path["path"] = Path_App . '/' . $repo . '/' . $controller . 'Controller.php';
+        }else{
+            $path["class"] = $controller;
+            $path["path"] = Path_App . '/App/Controllers/Http/'. $controller . 'Controller.php';
+        }
+        return $path;
+    }
+
+    public static function getCsrf()
+    {
+        return bin2hex(random_bytes(32));
+    }
+
 }
 
 ?>

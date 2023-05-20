@@ -1,0 +1,125 @@
+{% extends 'Partials/header.html.twig' %}
+
+{% block title %}Inicio
+{% endblock %}
+
+{% block content %}
+
+	<div class="container-fluid">
+		<div class="wrap"></div>
+					<h2>Buscar empleos</h2>
+		<div class="container buscar">
+			<div class="input-group">
+				<span class="input-group-text">
+					<i class="fas fa-briefcase"></i>
+				</span>
+				<input type="search" class="form-control" placeholder="Buscar por portafolio">
+				<span class="input-divider"></span>
+				<input type="search" class="form-control" placeholder="Ubicacion">
+				<span class="input-group-text">
+					<i class="fas fa-map-marker-alt"></i>
+				</span>
+			</div>
+		</div>
+		<div class="filters d-flex justify-content-center">
+			<div class="btn btn-primary">Ultimas 24 horas</div>
+			<div class="btn btn-primary">Nivel de experiencia</div>
+			<div class="btn btn-primary">Sector</div>
+			<div class="btn btn-primary">Jornada</div>
+		</div>
+		<div class="empleos" id="ofertas">
+			<div class="container d-flex justify-content-center">
+				<div class="ofertas">
+					<div class="opciones">
+						<div class="item-opt">
+							<i class="fa-solid fa-arrow-up-triangle-square"></i>
+						</div>
+						<div class="item-opt">
+							<i class="fa-sharp fa-solid fa-share-nodes"></i>
+						</div>
+						<div class="item-opt">
+							<i class="fa-solid fa-heart"></i>
+						</div>
+					</div>
+					<div class="card align-items-center">
+						<div class="img-card d-flex align-items-center">
+							<img class="img-fluid img-thumbnail" src='/Assets/img/user/4.png'></img>
+						</div>
+						<div class="card-text">
+							<ul>
+								<li class="caption">Programador senior</li>
+								<li>Sopify</li>
+								<li class="blur">Bogota DC, Colombia</li>
+								<li class="blur">
+									<i>hace 10 horas</i>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="card align-items-center">
+						<div class="img-card d-flex align-items-center">
+							<img class="img-fluid img-thumbnail" src='/Assets/img/user/3.png'></img>
+						</div>
+						<div class="card-text">
+							<ul>
+								<li class="caption">Programador senior</li>
+								<li>Sopify</li>
+								<li class="blur">Bogota DC, Colombia</li>
+								<li class="blur">
+									<i>hace 10 horas</i>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="card align-items-center">
+						<div class="img-card d-flex align-items-center">
+							<img class="img-fluid img-thumbnail" src='/Assets/img/user/1.png'></img>
+						</div>
+						<div class="card-text">
+							<ul>
+								<li class="caption">Programador senior</li>
+								<li>Sopify</li>
+								<li class="blur">Bogota DC, Colombia</li>
+								<li class="blur">
+									<i>hace 10 horas</i>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="card align-items-center">
+						<div class="img-card d-flex align-items-center">
+							<img class="img-fluid img-thumbnail" src='/Assets/img/user/2.png'></img>
+						</div>
+						<div class="card-text">
+							<ul>
+								<li class="caption">Programador senior</li>
+								<li>Sopify</li>
+								<li class="blur">Bogota DC, Colombia</li>
+								<li class="blur">
+									<i>hace 10 horas</i>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="ofertas">
+					<h2>Programador senior</h2>
+					<span class="subtitulo">Shopify | Bogota DC, Colombia | (Remoto) hace 10 horas</span>
+					<div class="text-principal">
+						<span>Jornada completa</span>
+						<span>$4'000.000</span>
+						<span>Servicios TI y Consulturia</span>
+					</div>
+					<div class="acciones">
+						<div class="btn btn-primary">Postularme</div>
+						<div class="btn btn-primary">Guardar</div>
+					</div>
+					<hr>
+					<div class="content-ofr">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus voluptatibus culpa aut cum eligendi. Cumque unde ea doloremque blanditiis iste nisi enim eligendi! Tempore atque eos qui ab inventore nesciunt?
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

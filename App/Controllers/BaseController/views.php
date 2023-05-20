@@ -6,6 +6,7 @@
  */
 namespace App\Controllers\BaseController;
 
+use App\Controllers\MiddleWare\bus\csrf_token;
 use Helpers\helper;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
@@ -44,7 +45,7 @@ use Twig\Loader\FilesystemLoader;
                     'debug' => true,
                     'auto_reload' => true
                     ]);
-
+                $twig->addExtension(new csrf_token());
                echo $twig->render("$repo/$view.html.twig",$data);
             
             }else{

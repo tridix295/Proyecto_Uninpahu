@@ -1,0 +1,89 @@
+CREATE TABLE IF NOT EXITS TiposUsuarios(
+    TuId int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    TuNombre VARCHAR(10) NOT NULL
+)Engine=InnoDB;
+
+INSERT INTO TiposUsuarios VALUES(null,'Administrador');
+INSERT INTO TiposUsuarios VALUES(null,'Natural');
+INSERT INTO TiposUsuarios VALUES(null,'Empresa');
+
+CREATE TABLE IF NOT EXISTS usuarios(
+    UsId INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    TuTipoUsuario INT NOT NULL,
+    UsNombre VARCHAR(50) NOT NULL,
+    UsPrimeraVez BOOLEAN NOT NULL DEFAULT 0,
+    UsApellido1 VARCHAR(50) NOT NULL,
+    UsApellido2 VARCHAR(50) NULL,
+    UsEmail VARCHAR(100) NOT NULL UNIQUE,
+    UsTelefono BIGINT(20) NULL,
+    UsEdad INT NOT NULL,
+    UsFechaNacimiento DATE NOT NULL, 
+    UsFecha DATETIME NOT NULL,
+    CONSTRAINT FK_TipoUsuario FOREIGN KEY (TuTipoUsuario) REFERENCES TiposUsuarios(TuId) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS Empresa(
+    EmId int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    EmUsId INT  NOT NULL,
+    EmNit VARCHAR(20) NOT NULL,
+    EmRazonSocial VARCHAR(100) NOT NULL,
+    EmSector VARCHAR(100) NOT NULL,
+    EmDescripcion VARCHAR(100) NOT NULL,
+    EmUbicacion VARCHAR(100) NOT NULL,
+    EmLogo int NULL,
+    EmFecha DATETIME,
+    CONSTRAINT FK_EmUsId_UsId FOREIGN KEY (EmUsId) REFERENCES usuarios(UsId) ON DELETE CASCADE
+)Engine=InnoDB;
+
+CREATE TABLE IF NOT EXITS PersonaNatural(
+    PnId INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    PnCurriculum INT NOT  NULL DEFAULT 0,
+    PnDiscapacidad INT NOT NULL,
+    PnIdentificacion NOT NULL,
+    PnNumeroIdentificacion INT(100) NOT NULL,
+    PnUbicacion VARCHAR(100) NOT NULL,
+    PnSexo ENUM('Hombre','Mujer','No definido'),
+    PnFecha DATETIME
+
+);
+
+CREATE TABLE IF NOT EXITS HojaVida(
+    HvId INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    HvDescripcion TEXT NOT NULL,
+    HvExperiencia INT(3) NOT NULL DEFAULT 0,
+    HvIdiomas VARCHAR(10) NOT NULL,
+    HvEscolaridad INT NOT NULL,
+    HvCompentencias int NULL,
+    HvAspiracionSalario  VARCHAR(50) NOT NULL DEFAULT 'A convenir',
+);
+
+CREATE TABLE IF NOT EXISTS Escolaridad(
+    EsId INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    EsInstituto VARCHAR(10) NOT NULL,
+    EsInicio DATE NOT NULL,
+    EsFin DATE NULL,
+);
+
+
+CREATE TABLE IF NOT EXISTS Estados(
+    EsId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    EsEstado VARCHAR(10) NOT NULL
+)Engine=InnoDB;
+CREATE TABLE IF NOT EXISTS Dispositivos(
+    DpId int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    DpDispositivo VARCHAR(100) NOT NULL
+)Engine=InnoDB;
+CREATE TABLE IF NOT EXISTS Archivos(
+    ArId INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    ArServidor INT NOT NULL,
+    ArNombreArchivo VARCHAR(100) NOT NULL,
+    CONSTRAINT FK_ArServidor_AsId FOREIGN KEY(ArServidor) REFERENCES ArchivosServidor(AsId) ON DELETE CASCADE
+)Engine=InnoDB; 
+CREATE TABLE IF NOT EXISTS ArchivosServidor(
+    AsId INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    AsDispositivo INT NOT NULL,
+    AsArchivoServidor VARCHAR(100) NOT NULL,
+    AsFecha DATETIME,
+    CONSTRAINT FK_AsDispositivo_DpId FOREIGN KEY (AsDispositivo) REFERENCES Dispositivos(DpId) ON DELETE CASCADE
+)Engine=InnoDB;

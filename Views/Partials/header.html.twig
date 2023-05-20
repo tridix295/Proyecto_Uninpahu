@@ -1,20 +1,64 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{% block title%} Tittle {% endblock %}</title>
-</head>
-<body>
-    <header>
-        <ul>
-            <li>lorem Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</li>
-            <li>lorem Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</li>
-            <li>lorem Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</li>
-        </ul>
-    </header>
-    <main>
-        <div class="content">
-            {% block content %} Contenido {% endblock %}
-        </div>
-    </main>
-</body>
-</html>
+﻿{% extends "layout.html.twig" %}
+{% block main %}
+			<div class="presentacion">
+				<header>
+					<nav class="navbar navbar-expand-lg px-3">
+						<div class="container-fluid">
+							<a class="navbar-brand" href="#">
+								<h1>EmpleoPosible</h1>
+							</a>
+							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<div class="collapse navbar-collapse" id="navbarNav">
+								<ul class="navbar-nav ms-auto">
+									<li class="nav-item active">
+										<a class="nav-link" href="#scrollspyHeading1">Inicio</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="/jobs">Trabajos</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="/user">Mis postulaciones</a>
+									</li>
+									<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle perfil" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Usuario</a>
+										<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+											<li>
+												<a class="dropdown-item" href="/user">Mi cuenta</a>
+											</li>
+											<li><hr class="dropdown-divider"></li>
+											<li>
+												<a class="dropdown-item" href="/login/logout">Salir</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</nav>
+				</header>	
+				<div class="row align-items-center">
+					<div class="col-sm-6 col-md-6">
+						<div class="presentacion-txt d-flex flex-column text-sm-start text-md-center ">
+							<h1>Bienvenido!</h1>
+							<span class="fs-5 my-2">Aqui­ encontraras oportunidades de empleo para personas con discapacidad. Conectamos empleadores inclusivos con candidatos capacitados. Encuentra tu proximo trabajo hoy mismo!</span>
+							<div class="boton-pre d-flex">
+								<a>Comenzar</a>
+								<div class="icon-circle">
+									<i class="fa-light fa-arrow-right"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 col-md-6 d-flex justify-content-cente">
+						<img src="/Assets/img/hero_right.png" class="img-fluid">
+					</div>
+				</div>
+			</div>
+
+		<div>
+			{% block content %}{% endblock %}
+		</div>
+
+{% endblock %}
