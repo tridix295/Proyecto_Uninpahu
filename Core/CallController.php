@@ -5,6 +5,8 @@
  * @author Sebastian Diaz
  * @version 1.0
  */
+require_once Path_App . '/Core/autoload.php';
+
 
 use Helpers\helper;
 
@@ -16,24 +18,22 @@ $url = helper::sliceRoute($url);
 // Definimos el nombre del controlador
 // Cada controlador debe tener la siguiente nomenclatura:
 // {nombreController}
-$controllerName = $url['controller'];
-
-$controllerFile = Path_App . '/App/Controllers/Http/' . $controllerName . 'Controller.php';
-if(!helper::validationRss('Controller',$controllerFile)){
-    die("Controlador no encontrado");
+$controllerFile = helper::makeRoute($url['controller'],$specialRepos);
+if(!helper::validationRss('Controller',$controllerFile["path"])){
+    die("Controlador no encontrado " . $controllerFile["class"]);
 };
 
 
-require_once $controllerFile;
-if(!class_exists($controllerName)){
-    die("El controlador $controllerName no esta definido");
+require_once $controllerFile["path"];
+if(!class_exists($controllerFile["class"])){
+    die("El controlador ". $controllerFile["class"] ." no esta definido");
 }
 // Instanciamos el controlador segun el nombre que nos llegue desde la url, tener en cuenta que el
 // nombre de la clase debe ser igual al nombre del archivo
-$controller = new $controllerName();
+$controller = new $controllerFile["class"]();
 $methodName = $url['method'];
 if(!method_exists($controller, $methodName)){
-    die("La accion $methodName no esta definida en el controlador $controllerName");
+    die("La accion $methodName no esta definida en el controlador ". $controllerFile["class"]);
 }
 $params = $url['params'];
 //Inicio de operacion con el controlador.
