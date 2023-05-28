@@ -46,6 +46,7 @@ trait sessionClient
     protected function getElementSession($element)
     {
         session_status() === PHP_SESSION_ACTIVE ? '' : session_start();
+        //var_dump($_SESSION);die();
         return !empty($_SESSION[$element]) ? $_SESSION[$element] : false;
     }
 
@@ -87,7 +88,7 @@ trait sessionClient
      */
     protected function destroySession(array $elements = [])
     {
-        foreach ($elements as $index) {
+        foreach ($elements as $index => $value) {
             if (isset($_SESSION[$index])) {
                 unset($_SESSION[$index]);
             }

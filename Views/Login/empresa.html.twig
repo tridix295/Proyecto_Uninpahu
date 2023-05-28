@@ -1,0 +1,65 @@
+{% extends "Login/layout.html.twig" %}
+{% block title %}Login
+{% endblock %}
+
+{% block main %}
+	<div class="container">
+		<div
+			class="main">
+			<!--progress bar-->
+			<!--form panels-->
+			<div class="row">
+				<div class="col-12 col-lg-10 m-auto">
+					
+					<form class="multisteps-form__form" action='/company/insert' method='POST'>
+                   
+				   		{{ csrf_token()|raw }}
+						<!--single form panel-->
+						<div class="multisteps-form__panel shadow p-4 rounded bg-white js-active" data-animation="scaleIn">
+							 <h3 class="multisteps-form__title">Registro</h3><br>
+                            <div class="multisteps-form__content d-flex flex-wrap justify-content-between">
+
+                                <div class="col-md-5 sm-2">
+									<label for="apellido" class="form-label">Razon social</label>
+									<input type="text" class="form-control" name='EmRazonSocial' placeholder='Nombre de la empresa'>
+								</div>
+                                <div class="col-md-5 sm-2">
+									<label for="apellido" class="form-label">NIT</label>
+									<input type="text" class="form-control" name='EmNit' placeholder='NIT de la empresa'>
+								</div><br><br><br><br>
+                                <div class="col-md-3">
+                                <label for="opciones" class="form-label" name='EmSector'>Sector</label>
+									<select name="" id="opciones" class="form-select" >
+                                        <option value="" selected>Seleciona una</option>
+                                        <option value="">Tecnologia</option>
+                                        <option value="">Farmaceutica</option>
+                                        <option value="">Valor</option>
+                                        <option value="">Valor</option>
+                                    </select>
+								</div>
+                                <div class="col-md-4 sm-2">
+									<label for="apellido" class="form-label">Ubicacion</label>
+									<input type="text" class="form-control" name='EmUbicacion' placeholder='Direccion de la empresa'>
+								</div>
+                                 <div class="col-md-3 sm-2">
+									<label for="apellido" class="form-label">Logo</label>
+									<input type="file" class="form-control" name='EmLogo'>
+								</div><br><br><br><br>
+								<div class="col-md-12">
+									<label for="email" class="form-label">Descricion de la empresa</label>
+									<textarea class="form-control" placeholder='Describe tu empresa...' name='EmDescripcion'></textarea>
+								</div>
+								<div class="col-md-12">
+                                	<div class="button-row d-flex mt-4">
+									<button class="btn btn-primary ml-auto js-btn-next" type="submit" title="Next">Continuar</button>
+								</div>
+								</div>
+
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

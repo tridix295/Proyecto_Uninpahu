@@ -1,48 +1,10 @@
-{% extends "layout.html.twig" %}
+{% extends 'Partials/header.html.twig' %}
 {% block title %}Buscar empleos
 {% endblock %}
 
-{% block main %}
-				<header style='background: #449342 !important'>
-					<nav class="navbar navbar-expand-lg px-3">
-						<div class="container-fluid">
-							<a class="navbar-brand" href="#">
-								<h1>EmpleoPosible</h1>
-							</a>
-							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-								<span class="navbar-toggler-icon"></span>
-							</button>
-							<div class="collapse navbar-collapse" id="navbarNav">
-								<ul class="navbar-nav ms-auto">
-									<li class="nav-item">
-										<a class="nav-link" href="#scrollspyHeading1">Inicio</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="/jobs">Trabajos</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link active" href="#scrollspyHeading2">Mis ofertas</a>
-									</li>
-									<li class="nav-item dropdown">
-										<a class="nav-link dropdown-toggle perfil" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Usuario</a>
-										<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-											<li>
-												<a class="dropdown-item" href="#scrollspyHeading3">Mi cuenta</a>
-											</li>
-											<li>
-												<a class="dropdown-item" href="#scrollspyHeading4">Mis postulaciones</a>
-											</li>
-											<li><hr class="dropdown-divider"></li>
-											<li>
-												<a class="dropdown-item" href="/login/logout">Salir</a>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</nav>
-				</header>	
+{% block content %}
+	
+	{{ parent() }}
 <div class="wrap"></div>
 <div class="container d-flex h-100 w-100">
     <div class="col-4 d-flex bg-light flex-column presentacion-usuario">

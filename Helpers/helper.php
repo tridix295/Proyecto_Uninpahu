@@ -130,6 +130,44 @@ class helper extends Messages
         fclose($handle);
     }
     
+    /**
+     * Valida la estructura de una url, y busca alguna coincidencia con el parametro buscado.
+     * @param mixed|string $search Parametro a buscar.
+     * @param int $precise 
+     *  0 -> Indica si dentro de la url debe aparecer todos los elementos buscados.
+     *  1 -> Indica que en caso de no encontrar alguna concidencia no finaliza la ejecucion.
+     * @return mixed|bool
+     */
+    public static function uri($search,int $precise = 0) {
+        $uri = array();
+        $url = $_SERVER['REQUEST_URI'];
+
+        //Busca los elemtos dentro de la url.
+        if(is_array($search)){
+            foreach($search as $key){
+                $find = strpos($url,$key);
+                
+                //Si dentro de alguno de los elementos no coincide finaliza la ejecucion y devuelve el estado.
+                if($precise === 0 && !$find){
+                    return $find;
+                }else{
+                    $uri[$key] = $find; 
+                }
+            }
+        }elseif(is_string($search)){
+            $find = strpos($url,$search);
+            
+            //Si dentro de alguno de los elementos no coincide finaliza la ejecucion y devuelve el estado.
+            if($precise === 0 && !$find){
+                return $find;
+            }else{
+                $uri[$search] = $find; 
+            }
+        }
+
+        return $uri;
+    }
+
     public static function makeRoute($controller,$options = []){
         $path = array();
         if(array_key_exists($controller,$options)){

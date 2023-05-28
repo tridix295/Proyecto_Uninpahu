@@ -19,9 +19,23 @@ class login
     public function __construct()
     {
         $this->auth = new auth();
+
+        //Si el usuario ya inicio sesion se redirecciona al home.
+        if($this->auth->login()){
+            $this->auth->redirected('home');
+        }
     }
 
+    /**
+     * Devuelve el estado de la sesion, si el esuario ha iniciado sesion o no.
+     */
+    public function logout(){
+        $this->auth->logout();
+    }
 
+    /**
+     * Evento principal, el cual es llamado para mostrar la interfaz.
+     */
     public function index()
     {
         $objView = new views();
@@ -44,12 +58,7 @@ class login
        $this->Authenticate();
     }
 
-    /**
-     * Evento insert
-    */
-    public function insert(){
-        $this->store();
-    }
+
 
     public function store(){
 
@@ -66,7 +75,7 @@ class login
 
         if($request){
             //Validamos la informacion y lo redireccionamos a la vista correspondiente.
-            $this->auth->validate($request)->redirected();
+            $this->auth->validate($request)->redirected('home');
         }
     }
 }

@@ -1,52 +1,19 @@
-{% extends "layout.html.twig" %}
-{% block title %}Buscar empleos
+{% extends 'Partials/header.html.twig' %}
+{% block title %}Usuario
 {% endblock %}
 
-{% block main %}
-				<header style='background: #449342 !important'>
-					<nav class="navbar navbar-expand-lg px-3">
-						<div class="container-fluid">
-							<a class="navbar-brand" href="#">
-								<h1>EmpleoPosible</h1>
-							</a>
-							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-								<span class="navbar-toggler-icon"></span>
-							</button>
-							<div class="collapse navbar-collapse" id="navbarNav">
-								<ul class="navbar-nav ms-auto">
-									<li class="nav-item">
-										<a class="nav-link" href="/">Inicio</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="/jobs">Trabajos</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="/user">Mis postulaciones</a>
-									</li>
-									<li class="nav-item dropdown">
-										<a class="nav-link dropdown-toggle perfil" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">usuario</a>
-										<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-											<li>
-												<a class="dropdown-item" href="/user">Mi cuenta</a>
-											</li>
-											<li><hr class="dropdown-divider"></li>
-											<li>
-												<a class="dropdown-item" href="#scrollspyHeading5">Salir</a>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</nav>
-				</header>	
+{% block content %}
+	
+	{{ parent() }}
 <div class="wrap"></div>
 <div class="container d-flex h-100 w-100">
     <div class="col-4 d-flex bg-light flex-column presentacion-usuario">
-        <div class="img-user"></div>
+        <div class="img-user">
+			<img class="" src=''></img>
+		</div>
         <div class="pre-info">
             <div class="user-name">
-                Sebastian Diaz
+                {{ UsNombre }}
             </div>
             <div class="profesion">
                 Desarrollador web
@@ -62,18 +29,18 @@
         <form class="row g-3" action='/home' method='POST'>
             <div class="col-md-8">
                 <label for="nombre" class="form-label">Correo</label>
-                <input type="email" class="form-control" placeholder='Correo'>
+                <input type="email" class="form-control" placeholder='Correo' value='{{ UsEmail }}'>
             </div>
             <div class="col-md-4">
-                <label for="apellido" class="form-label">Contrasena</label>
-                <input type="password" class="form-control" placeholder='Ingrese su contrasena'>
+                <label for="apellido" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" placeholder='Ingrese su contrasena' value={{ UsPassword|slice(0,8) }}>
             </div>
             <div class="col-md-4">
                 <label for="email" class="form-label">Tel.</label>
-                <input type="numer" class="form-control" placeholder='Digita tu numero'>
+                <input type="numer" class="form-control" placeholder='Digita tu numero' value={{ UsTelefono }}>
             </div>
             <div class="col-md-8">
-                <label for="inputState" class="form-label">Dejanos un mensaje</label>
+                <label for="inputState" class="form-label">Identificacion</label>
                 <input type="text" name="identificacion" id=""
                     placeholder='Ingresa tu numero de identificacion' class='form-control'>
             </div>
@@ -81,7 +48,7 @@
 				<label for="pais">Pais</label>
                 <select class="form-select">
                     <option selected>Seleciona tu pais de recidencia</option>
-                    <option value="1">Colombia</option>
+                    <option value="1" selected>Colombia</option>
                     <option value="2">Panama</option>
                     <option value="3">Brasil</option>
                 </select>
@@ -90,7 +57,7 @@
 			<label for="ciudad">Ciudad</label>
                 <select class="form-select">
                     <option selected>Seleciona tu ciudad de recidencia</option>
-                    <option value="1">Bogota</option>
+                    <option value="1" selected>Bogota</option>
                     <option value="2">Ciudad 21</option>
                     <option value="3">Ciudad 2</option>
                 </select>
@@ -101,7 +68,7 @@
                     placeholder='Digite su direccion de residencia'>
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button class="btn btn-danger me-md-2" type="button">Eliminar cuenta</button>
+                <button class="btn btn-danger me-md-2" type="button" onclick='Usuario('Eliminar')'>Eliminar cuenta</button>
                 <button class="btn btn-primary" type="button">Actualizar</button>
             </div>
         </form>
@@ -236,4 +203,5 @@
         </nav>
     </div>
 </div>
+
 {% endblock %}

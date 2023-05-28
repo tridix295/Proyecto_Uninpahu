@@ -1,0 +1,427 @@
+{% extends "Login/layout.html.twig" %}
+{% block title %}Login
+{% endblock %}
+
+{% block main %}
+	<div class="container">
+		<div
+			class="main">
+			<!--progress bar-->
+			<div class="row d-flex justify-content-center">
+				<div class="col-12 col-lg-8 ml-auto mr-auto mb-4">
+					<div class="multisteps-form__progress">
+						<button class="multisteps-form__progress-btn js-active" type="button" title="User Info">Informacion personal</button>
+						<button class="multisteps-form__progress-btn" type="button" title="Address">Informacion de residencia</button>
+						<button class="multisteps-form__progress-btn" type="button" title="Order Info">Formacion academica</button>
+						<button class="multisteps-form__progress-btn" type="button" title="Comments">Perfil profesional</button>
+					</div>
+				</div>
+			</div>
+			<!--form panels-->
+			<div class="row">
+				<div class="col-12 col-lg-10 m-auto">
+
+					<form
+						class="multisteps-form__form">
+
+						<!--single form panel-->
+						<div class="multisteps-form__panel shadow p-4 rounded bg-white js-active" data-animation="scaleIn">
+							<h3 class="multisteps-form__title">Informacion personal</h3><br>
+							<div class="multisteps-form__content d-flex flex-wrap justify-content-between">
+
+								<div class="col-md-4 m-b-30">
+									<label for="PnIdentificacion" class="form-label">Tipo de identificacion</label>
+									<select name="PnIdentificacion" id="PnIdentificacion" class="form-select">
+										<option selected>Selecionar</option>
+										<option value="CC">Cedula de ciudadania</option>
+										<option value="CE">Cedula extranjeria</option>
+										<option value="P">Pasaporte</option>
+										<option value="TI">Tarjeta de identidad</option>
+										<option value="RC">Registro civil</option>
+									</select>
+								</div>
+
+								<div class="col-md-5 sm-2 m-b-30">
+									<label for="Identificacion" name='PnNumeroIdentificacion' class="form-label">Id entificacion</label>
+									<input type="number" class="form-control" name='PnNumeroIdentificacion' placeholder='# de identificacion'>
+								</div>
+
+								<div class="col-md-4 m-b-30">
+									<label for="TdId" class="form-label">Tipo discapcidad</label>
+									<select name="TdId" id="PnNumeroIdentificacion" class="form-select">
+										<option selected>Seleccionar</option>
+										<option value="0">Auditiva</option>
+										<option value="1">Visual</option>
+										<option value="2">Cognitiva</option>
+										<option value="3">Fisica</option>
+										<option value="4">Multiple</option>
+										<option value="5">Psicosocial</option>
+									</select>
+								</div>
+								<div class="col-md-3 m-b-30">
+									<label for="PnSexo" class="form-label">Sexo</label>
+									<select name="PnSexo" id="PnNumeroIdentificacion" class="form-select">
+										<option selected>Seleccionar</option>
+										<option value="0">Hombre</option>
+										<option value="1">Mujer</option>
+										<option value="2">No definido</option>
+									</select>
+								</div>
+								<div class="col-md-4 m-b-30">
+									<label for="PnEstadoCivil" class="form-label">Estado civil</label>
+									<select name="PnEstadoCivil" id="PnNumeroIdentificacion" class="form-select">
+										<option selected>Seleccionar</option>
+										<option value="auditiva">Casad@</option>
+										<option value="visual">Solter@</option>
+									</select>
+								</div>
+								<div class="button-row w-100 d-flex mt-4 justify-content-end">
+									<button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Siguiente</button>
+								</div>
+							</div>
+						</div>
+						<!--single form panel-->
+						<div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+							<h3 class="multisteps-form__title m-b-30">Informacion de residencia</h3>
+							<div class="multisteps-form__content d-flex flex-wrap justify-content-between">
+								<div class="col-md-6 m-b-30">
+									<label for="DiDescripcion" class="form-label">Direccon principal</label>
+									<div class="col">
+										<input class="multisteps-form__input form-control" type="text" name='DiDescripcion' placeholder="Dirección principal"/>
+									</div>
+								</div>
+
+								<div class="col-md-5 m-b-30">
+									<label for="DiComplemento" class="form-label">Complemento dirección</label>
+									<div class="col">
+										<input class="multisteps-form__input form-control" name='DiComplemento' type="text" placeholder="Casa / Piso / Torre / Apto"/>
+									</div>
+								</div>
+
+								<div class="col-md-6 m-b-30">
+									<label for="Direccion alternativa" class="form-label">Direccion alternativa</label>
+									<div class="col">
+										<input class="multisteps-form__input form-control" name='DiAlternativo' type="text" placeholder="Dirección alternativa"/>
+									</div>
+								</div>
+
+								<div class="col-md-5 m-b-30">
+									<label for="Complemento dirección" class="form-label">Complemento dirección</label>
+									<div class="col">
+										<input class="multisteps-form__input form-control" name='DiComplemento2' type="text" placeholder="Casa / Piso / Torre / Apto"/>
+									</div>
+								</div>
+
+								<div class="col-md-5 m-b-30">
+									<label for="ciudad" class="form-label">Ciudad</label>
+									<input class="multisteps-form__input form-control" name='CiNombre' type="text" placeholder="Ciudad"/>
+								</div>
+
+								<div class="col-md-5">
+									<label for="Localidad" class="form-label">Localidad</label>
+									<select name="LoId" id="Localidad" class="form-select" >
+										<option value="seleccione">-------</option>
+										<option value="Usaquen">Usaquen</option>
+                                        <option value="Chapinero">Chapinero</option>
+										<option value="Santa fe">Santa fe</option>	
+										<option value="San Cristobal">San Cristobal</option>	
+										<option value="Usme">Usme</option>	
+										<option value="Tunjuelito">Tunjuelito</option>	
+										<option value="Bosa">Bosa</option>	
+										<option value="Kennedy">Kennedy</option>	
+										<option value="Fontibon">Fontibon</option>	
+										<option value="Engativa">Engativa</option>	
+										<option value="Suba">Suba</option>	
+										<option value="Barrios Unidos">Barrios Unidos</option>	
+										<option value="Teusaquillo">Teusaquillo</option>	
+										<option value="Los Martires">Los Martires</option>	
+										<option value="Antonio Nariño">Antonio Nariño</option>	
+										<option value="Puente aranda">Puente Aranda</option>
+										<option value="Candelaria ">Candelaria </option>
+										<option value="Rafael Uribe uribe">Rafael Uribe uribe</option>
+										<option value="Ciudad Bolívar">Ciudad Bolívar</option>
+										<option value="Sumapaz">Sumapaz</option>
+										
+                                    </select>
+									</div>						
+								<div class="button-row w-100 d-flex mt-4 justify-content-end justify-content-between">
+									<button class="btn btn-primary js-btn-prev" type="button" title="Prev">Anterior</button>
+									<button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Siguiente</button>
+								</div>
+							</div>
+						</div>
+						<!--single form panel-->
+						<div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+							<h3 class="multisteps-form__title m-b-30">Formacion academica</h3>
+
+							<div class="m-b-30" style=' font-size: 1.5rem;justify-content:space-around;'>
+								<button class="btn btn-primary" type="button" title="add" id='add'><i class="fa-light fa-square-plus" ></i> Agregar</button>
+								<button class="btn btn-danger" type="button" title="remove" id='remove'><i class="fa-thin fa-trash-plus"></i> Eliminar</button>
+							</div>
+							<div class="multisteps-form__content d-flex flex-wrap justify-content-between" id='dinamic'>
+								<div class="row">
+									<div class="col-md-3 m-b-30">
+										<label for="EsNivel" class="form-label">Nivel educativo</label>
+										<select name="EsNivel" id="PnNumeroIdentificacion" class="form-select">
+										<option selected>Seleccionar</option>
+										<option value="0">Basica</option>
+										<option value="1">Primaria</option>
+										<option value="2">Bachillerato</option>
+										<option value="3">Tecnica</option>
+										<option value="4">Profesional</option>
+										</select>
+									</div>
+									<div class="col-md-3 m-b-30">
+										<label for="EsInstituto" class="form-label">Instituto educativo</label>
+										<input type="text" class="form-control" placeholder='Nombre del colegio'>
+									</div>
+
+									<div class="col-md-3 m-b-30">
+										<label for="EsInicio"  class="form-label">Fecha de inicio:</label>
+										<input type="date" class="form-control" id="fecha_Inicio" name="EsInicio">
+									</div>
+
+									<div class="col-md-3 m-b-30">
+										<label for="EsFin"  class="form-label">Finalizacion:</label>
+										<input type="date" class="form-control" id="EsFin" name="EsFin">
+									</div>
+								</div>
+							</div>
+							<div class="button-row w-100 d-flex mt-4 justify-content-end justify-content-between">
+								<button class="btn btn-primary js-btn-prev" type="button" title="Prev">Anterior</button>
+								<button class="btn btn-primary ml-auto js-btn-next" type="button" title="Next">Siguiente</button>
+							</div>
+						</div>
+						<!--single form panel-->
+						<div class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+							<h3 class="multisteps-form__title">Perfil Profesional</h3>
+							<div class="multisteps-form__content m-t-30">
+							<div class="multisteps-form__content d-flex flex-wrap justify-content-between" id='dinamic'>
+								<div class="row">
+									<div class="col-md-12 m-b-30">
+										<label for="Tipo identificacion" class="form-label">Perfil profesional</label>
+										<textarea name="PePerfil" id="" class='form-control' placeholder='Realiza una descripcion tuya...'></textarea>
+									</div>
+
+									<div class="row">
+									<h2 class="multisteps-form__title m-b-30">Experiencia laboral</h2>
+										<div class="col-md-3 m-b-30">
+											<label for="PeCargo" class="form-label">Cargo</label>
+											<input type="PeCargo" class="form-control" placeholder='Nombre del cargo'>
+										</div>
+										<div class="col-md-3 m-b-30">
+											<label for="PeEmpresa" class="form-label">Empresa</label>
+											<input type="PeEmpresa" class="form-control" placeholder='Nombre del colegio'>
+										</div>
+										<div class="col-md-3 m-b-30">
+											<label for="PeInicio" class="form-label">Fecha inicio</label>
+											<input type="date" class="form-control" name='PeInicio' placeholder='Nombre del colegio'>
+										</div>
+										<div class="col-md-3 m-b-30">
+											<label for="PeFin" class="form-label">Fecha finalizacion</label>
+											<input type="date" name='PeFin' class="form-control" placeholder='Nombre del colegio'>
+										</div>
+									</div>
+
+									<div class="row">
+										<h2 class="multisteps-form__title m-b-30">Competencias</h2>
+										<div class='col-md-8 m-b-30'>
+											<label for="" name='PeCompetencias' class='form-label'>Competencias</label>
+											<input type="text" name="PeCompetencias" id="" class='form-control' placeholder='Escribe tus competencias separado por comas'>
+										</div>
+										<div class='col-md-4 m-b-30'>
+											<label for="PeSalario" class='form-label'>Aspiracion salarial</label>
+											<input type="number" name="PeSalario" id="" class='form-control' placeholder='$'>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="button-row w-100 d-flex mt-4 justify-content-end justify-content-between">
+								<button class="btn btn-primary js-btn-prev" type="button" title="Prev">Anterior</button>
+								<button class="btn btn-primary ml-auto js-btn-next" type="submit" title="finalizar">Finalizar</button>
+							</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+
+// Obtener el contenedor donde se agregarán las copias de los div
+var container = document.getElementById('dinamic');
+
+// Obtener el botón "Agregar" y agregar el evento click
+var addButton = document.getElementById('add');
+addButton.addEventListener('click', addInput);
+
+// Obtener el botón "Eliminar" y agregar el evento click
+var removeButton = document.getElementById('remove');
+removeButton.addEventListener('click', removeInput);
+
+
+	// Función para agregar un nuevo conjunto de div
+function addInput() {
+  // Crear el div contenedor
+  var inputDiv = document.createElement('div');
+	inputDiv.className = 'row'
+
+  // Crear los div internos
+  var div1 = document.createElement('div');
+  div1.className = 'col-md-3 m-b-30';
+  div1.innerHTML = '<label for="Tipo identificacion" class="form-label">Nivel educativo</label><select name="PnNumeroIdentificacion" class="form-select"><option selected>Seleccionar</option><option value="0">Basica</option><option value="1">Primaria</option><option value="2">Bachillerato</option><option value="3">Tecnica</option><option value="4">Profesional</option></select>';
+
+  var div2 = document.createElement('div');
+  div2.className = 'col-md-3 m-b-30';
+  div2.innerHTML = '<label for="Instituto_educativo" class="form-label">Instituto educativo</label><input type="text" class="form-control" placeholder="Nombre del colegio">';
+
+  var div3 = document.createElement('div');
+  div3.className = 'col-md-3 m-b-30';
+  div3.innerHTML = '<label for="fecha_Inicio" class="form-label">Fecha de inicio:</label><input type="date" class="form-control" name="fecha_Inicio">';
+
+  var div4 = document.createElement('div');
+  div4.className = 'col-md-3 m-b-30';
+  div4.innerHTML = '<label for="fecha_Finalizacion" class="form-label">Finalizacion:</label><input type="date" class="form-control" name="fecha_Finalizacion">';
+
+  // Agregar los div al div contenedor
+  inputDiv.appendChild(div1);
+  inputDiv.appendChild(div2);
+  inputDiv.appendChild(div3);
+  inputDiv.appendChild(div4);
+
+  // Agregar el div contenedor al contenedor principal
+  container.appendChild(inputDiv);
+}
+
+// Función para eliminar el último conjunto de div
+function removeInput() {
+  // Obtener todos los conjuntos de div
+  var inputs = container.getElementsByClassName('row');
+
+  // Verificar si hay al menos un conjunto de div
+  if (inputs.length > 0) {
+    // Eliminar el último conjunto de div
+    container.removeChild(inputs[inputs.length - 1]);
+  }
+}
+		// DOM elements
+const DOMstrings = {
+stepsBtnClass: 'multisteps-form__progress-btn',
+stepsBtns: document.querySelectorAll(`.multisteps-form__progress-btn`),
+stepsBar: document.querySelector('.multisteps-form__progress'),
+stepsForm: document.querySelector('.multisteps-form__form'),
+stepsFormTextareas: document.querySelectorAll('.multisteps-form__textarea'),
+stepFormPanelClass: 'multisteps-form__panel',
+stepFormPanels: document.querySelectorAll('.multisteps-form__panel'),
+stepPrevBtnClass: 'js-btn-prev',
+stepNextBtnClass: 'js-btn-next'
+};
+
+// remove class from a set of items
+const removeClasses = (elemSet, className) => {
+elemSet.forEach(elem => {
+elem.classList.remove(className);
+});
+};
+// return exect parent node of the element
+const findParent = (elem, parentClass) => {
+let currentNode = elem;
+while (! currentNode.classList.contains(parentClass)) {
+currentNode = currentNode.parentNode;
+}
+return currentNode;
+};
+// get active button step number
+const getActiveStep = elem => {
+return Array.from(DOMstrings.stepsBtns).indexOf(elem);
+};
+// set all steps before clicked (and clicked too) to active
+const setActiveStep = activeStepNum => { // remove active state from all the state
+removeClasses(DOMstrings.stepsBtns, 'js-active');
+// set picked items to active
+DOMstrings.stepsBtns.forEach((elem, index) => {
+if (index <= activeStepNum) {
+elem.classList.add('js-active');
+}
+});
+};
+// get active panel
+const getActivePanel = () => {
+let activePanel;
+DOMstrings.stepFormPanels.forEach(elem => {
+if (elem.classList.contains('js-active')) {
+activePanel = elem;
+}
+});
+return activePanel;
+};
+// open active panel (and close unactive panels)
+const setActivePanel = activePanelNum => { // remove active class from all the panels
+removeClasses(DOMstrings.stepFormPanels, 'js-active');
+// show active panel
+DOMstrings.stepFormPanels.forEach((elem, index) => {
+if (index === activePanelNum) {
+elem.classList.add('js-active');
+setFormHeight(elem);
+}
+});
+};
+// set form height equal to current panel height
+const formHeight = activePanel => {
+const activePanelHeight = activePanel.offsetHeight;
+DOMstrings.stepsForm.style.height = `${activePanelHeight}px`;
+};
+const setFormHeight = () => {
+const activePanel = getActivePanel();
+formHeight(activePanel);
+};
+// STEPS BAR CLICK FUNCTION
+DOMstrings.stepsBar.addEventListener('click', e => { // check if click target is a step button
+const eventTarget = e.target;
+if (! eventTarget.classList.contains (`${
+DOMstrings.stepsBtnClass
+}`)) {
+return;
+}
+// get active button step number
+const activeStep = getActiveStep(eventTarget);
+// set all steps before clicked (and clicked too) to active
+setActiveStep(activeStep);
+// open active panel
+setActivePanel(activeStep);
+});
+// PREV/NEXT BTNS CLICK
+DOMstrings.stepsForm.addEventListener('click', e => {
+const eventTarget = e.target;
+// check if we clicked on `PREV` or NEXT` buttons
+if (!(eventTarget.classList.contains (`${
+DOMstrings.stepPrevBtnClass
+}`) || eventTarget.classList.contains (`${
+DOMstrings.stepNextBtnClass
+}`))) {
+return;
+}
+// find active panel
+const activePanel = findParent(eventTarget, `${
+DOMstrings.stepFormPanelClass
+}`);
+let activePanelNum = Array.from(DOMstrings.stepFormPanels).indexOf(activePanel);
+// set active step and active panel onclick
+if (eventTarget.classList.contains (`${
+DOMstrings.stepPrevBtnClass
+}`)) {
+activePanelNum--;
+} else {
+activePanelNum++;
+} setActiveStep(activePanelNum);
+setActivePanel(activePanelNum);
+});
+// SETTING PROPER FORM HEIGHT ONLOAD
+window.addEventListener('load', setFormHeight, false);
+// SETTING PROPER FORM HEIGHT ONRESIZE
+window.addEventListener('resize', setFormHeight, false);
+
+
+	</script>
+{% endblock %}
