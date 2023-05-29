@@ -7,6 +7,7 @@
 namespace App\Controllers\BaseController;
 
 use App\Controllers\MiddleWare\bus\csrf_token;
+use App\Controllers\MiddleWare\bus\profile;
 use Helpers\helper;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
@@ -46,11 +47,16 @@ use Twig\Loader\FilesystemLoader;
                     'auto_reload' => true
                     ]);
                 $twig->addExtension(new csrf_token());
+                $twig->addExtension(new profile( (array) $data));
                echo $twig->render("$repo/$view.html.twig",$data);
             
             }else{
                 echo 'No encontrado: ' . $this->pathView . "/$view.twig";
             } 
+        }
+
+        public function getData($data = ""){
+         //   if()
         }
     }
 ?>

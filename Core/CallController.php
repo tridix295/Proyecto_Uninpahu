@@ -6,6 +6,7 @@
  * @version 1.0
  */
 require_once Path_App . '/Core/autoload.php';
+require_once Path_App . '/Core/environment.php';
 
 
 use Helpers\helper;
@@ -14,7 +15,7 @@ use Helpers\helper;
 // controlador por defecto sera home.
 $url = $_GET["url"] ?? "home";
 $url = helper::sliceRoute($url);
-
+// /var_dump($url);die();
 // Definimos el nombre del controlador
 // Cada controlador debe tener la siguiente nomenclatura:
 // {nombreController}

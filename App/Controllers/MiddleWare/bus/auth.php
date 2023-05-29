@@ -1,9 +1,15 @@
 <?php
 namespace App\Controllers\MiddleWare\bus;
+
 use Helpers\hash;
 use App\Models\User\UserModel;
+use Helpers\user;
 use Helpers\sessionClient;
+use Illuminate\Database\QueryException;
 
+/**
+ * clase para administrar los procesos de autenticacion.
+ */
 class auth{
     /**
      * Inicializar el administrador de sesiones.
@@ -12,7 +18,7 @@ class auth{
         sessionClient::__construct as private session;
     }
 
-    private $status = false;
+    public $logged = false;
 
     public function __construct()
     {
@@ -20,16 +26,67 @@ class auth{
         return $this;
     }
 
+    public function register(Array $request){
+        $this->store($request);
+        return $this;
+    }
+
+    public function logout(){
+        $status = $this->destroySession($_SESSION);
+        $this->redirected();
+    }
+
+    /**
+     * Indica si el usuario se encuentra logueado.
+     * @return bool
+     */
+    public function login():bool {
+        return $this->logged;
+    }
+
+    private function store(array $request){
+        //Obtenemos la clave del usuario en caso de que encuentre algun registro con el correo dado.
+        $user = UserModel::where('UsEmail',$request['email'])->first();
+
+        if(!$user){
+            //var_dump($request);die();
+            $pass = hash::generatePasswordHash($request['pass']);
+            $age =user::age($request['nacimiento']);
+  
+            try { 
+                $user = UserModel::create([
+                'TuTipoUsuario' => 1,
+                'UsNombre' => $request['username'], 
+                'UsApellido1' => $request['primerapellido'],
+                'UsApellido2' => $request['segundoapellido'],
+                'UsEmail' => $request['email'],
+                'UsPassword' => $pass,
+                'UsTelefono' => null,
+                'UsEdad', $age,
+                'UsFechaNacimiento', $request['nacimiento']
+            ]);
+
+            //Genera una sesion despues de insertar la info.
+            $this->guard($user->TuTipoUsuario,$user->id);
+            }catch(QueryException $e){
+                die($e -> getMessage());
+            }
+        }
+    }
+
     /**
      * Valida si encuentra una session activa, de ser asi no lo deja ingresar al login o registro.
     */
     private function isLoged(){
-        $this->status = $this->getElementSession('UsId');
-        if($this->status && strpos($_SERVER['REQUEST_URI'],'login') !== false){
-            $this->redirected();
-        } 
+
+        $this->logged = $this->getElementSession('UsId');
+        if(!$this->logged && strpos($_SERVER['REQUEST_URI'],'login') === false && strpos($_SERVER['REQUEST_URI'],'register') === false){
+    
+           $this->redirected();
+        }
     }
 
+    
     /**
      * Valida si un usuario puede autenticarse o no de manera satisfactoria.
      * @param string $pass Contraseña digitada.
@@ -53,8 +110,9 @@ class auth{
      * @return void
     */
     private function guard($tipo,$Id):void {
+        //die("$tipo | $Id");
         $this->setSession(["UsId" => $Id, 'UsTipo' => $tipo]);
-        $this->status = true;
+        $this->logged = true;
     }
 
     /**
@@ -63,9 +121,7 @@ class auth{
     */
     public function redirected( string $view = 'login')
     {
-        if($this->status){
-            $view = 'home';
-        }
+    
        header("Location: /$view");
     }
 }

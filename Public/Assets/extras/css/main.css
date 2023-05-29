@@ -258,7 +258,11 @@ iframe {
   position: relative;
   border-bottom: 1px solid #b2b2b2;
 }
-
+.span-check{
+  font-family: Poppins-Regular;
+  font-size: 15px;
+  color: #808080;
+}
 .label-input100 {
   font-family: Poppins-Regular;
   font-size: 15px;
@@ -332,51 +336,40 @@ input.input100 {
 [ Restyle Checkbox ]*/
 
 .input-checkbox100 {
-  display: none;
+  cursor: pointer;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+  width: 1rem;
+  height: 1rem;
+  appearance: none;
+  border: 1px solid #999999;
+  border-radius: 4px;
 }
-
+.input-checkbox100:checked {
+  background-color: #57b846;
+}
+.input-checkbox100:focus {
+  border-color: rgb(80, 67, 250);
+} 
+.input-checkbox100:disabled {
+  background-color: #999999;
+  background-image: none;
+} 
+.input-checkbox100:disabled:checked {
+  background-color: #999999;
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+} 
+.input-checkbox100 {
+  transition: background-color 0.3s ease-in-out;
+}
 .label-checkbox100 {
   font-family: Poppins-Regular;
-  font-size: 13px;
+  font-size: 1rem;
   color: #999999;
   line-height: 1.4;
-
-  display: block;
   position: relative;
-  padding-left: 26px;
-  cursor: pointer;
-}
-
-.label-checkbox100::before {
-  content: "\f00c";
-  font-family: FontAwesome;
-  font-size: 13px;
-  color: transparent;
-
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  border-radius: 2px;
-  background: #fff;
-  border: 1px solid #e6e6e6;
-  left: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
-.input-checkbox100:checked + .label-checkbox100::before {
-  color: #57b846;
+  padding-left: 2rem;
+  padding-right: 0.5rem;
 }
 
 /*------------------------------------------------------------------

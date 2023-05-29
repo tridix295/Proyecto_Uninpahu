@@ -62,6 +62,18 @@ trait request {
     }
 
     /**
+     * Devuelve varios elementos de la solicitud entrante.
+     * @return mixed
+    */
+    public function Mix(Array $elements) {
+        $mix = array();
+        foreach($elements as $key){
+            $mix[] = !empty($this->request['params'][$key]) ? $this->request['params'][$key] : null;
+        }
+        return $mix;
+    }
+
+    /**
      * Devuelve todos los elementos de la solicitud http.
      * @return mixed
      */
